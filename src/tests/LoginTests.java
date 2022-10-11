@@ -60,4 +60,16 @@ public class LoginTests extends BasicTest{
 				.contains("/login"),
 				"Url should contain '/login'");
 	}
+	
+	@Test (priority = 50)
+	public void Login() {
+		navPage.getLoginButton().click();
+		loginPage.getEmailInput().sendKeys("admin@admin.com");
+		loginPage.getPasswordInput().sendKeys("12345");
+		loginPage.getLoginButton().click();
+		loginPage.waitForSuccessfullLogIn();
+		Assert.assertTrue(driver.getCurrentUrl()
+				.contains("/home"),
+				"Url should contain '/home'");
+	}
 }
