@@ -41,7 +41,7 @@ public class MessagePopUpPage {
 	}
 	
 	public WebElement getCloseButtonFromVerifyAccountPopUp() {
-		return driver.findElement(By.className("btnClose"));
+		return driver.findElement(By.xpath("//*[contains(@class,'v-btn__content') and contains(text(),'Close')]"));
 	}
 	
 	

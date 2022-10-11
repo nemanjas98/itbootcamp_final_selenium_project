@@ -39,7 +39,7 @@ public class LoginTests extends BasicTest{
 		Assert.assertTrue(messagePopUpPage.getTextMessageFromPopUp()
 				.getText()
 				.contains("User does not exists"),
-				"PopUp should contain + 'User does not exists' text");
+				"PopUp should contain 'User does not exists' text");
 		Assert.assertTrue(driver.getCurrentUrl()
 				.contains("/login"),
 				"Url should contain '/login'");
@@ -55,7 +55,7 @@ public class LoginTests extends BasicTest{
 		Assert.assertTrue(messagePopUpPage.getTextMessageFromPopUp()
 				.getText()
 				.contains("Wrong password"),
-				"PopUp should contain + 'Wrong password' text");
+				"PopUp should contain 'Wrong password' text");
 		Assert.assertTrue(driver.getCurrentUrl()
 				.contains("/login"),
 				"Url should contain '/login'");

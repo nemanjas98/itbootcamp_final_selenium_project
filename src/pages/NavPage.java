@@ -41,7 +41,7 @@ public class NavPage {
 	}
 	
 	public WebElement getSignUpButton() {
-		return driver.findElement(By.className("v-btn--contained"));
+		return driver.findElement(By.xpath("//*[contains(@class,'v-btn__content') and contains(text(),'Sign Up')]"));
 	}
 
 	public WebElement getLoginButton() {
