@@ -15,4 +15,17 @@ public class LoginTests extends BasicTest{
 				.contains("/login"),
 				"Url should contain '/login'");
 	}
+	
+	@Test (priority = 20)
+	public void ChecksInputTypes() {
+		navPage.getLoginButton().click();
+		Assert.assertTrue(loginPage.getEmailInput()
+				.getAttribute("type")
+				.equals("email"),
+				"Value for the type attribute should be email");
+		Assert.assertTrue(loginPage.getPasswordInput()
+				.getAttribute("type")
+				.equals("password"),
+				"Value for the type attribute should be password");	
+	}
 }
