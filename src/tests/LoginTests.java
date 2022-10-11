@@ -44,4 +44,20 @@ public class LoginTests extends BasicTest{
 				.contains("/login"),
 				"Url should contain '/login'");
 	}
+	
+	@Test (priority = 40)
+	public void DisplaysErrorsWhenPasswordIsWrong() {
+		navPage.getLoginButton().click();
+		loginPage.getEmailInput().sendKeys("admin@admin.com");
+		loginPage.getPasswordInput().sendKeys("password123");
+		loginPage.getLoginButton().click();
+		messagePopUpPage.waitForPopUpToBeVisible();
+		Assert.assertTrue(messagePopUpPage.getTextMessageFromPopUp()
+				.getText()
+				.contains("Wrong password"),
+				"PopUp should contain + 'Wrong password' text");
+		Assert.assertTrue(driver.getCurrentUrl()
+				.contains("/login"),
+				"Url should contain '/login'");
+	}
 }
