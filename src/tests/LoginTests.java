@@ -28,4 +28,20 @@ public class LoginTests extends BasicTest{
 				.equals("password"),
 				"Value for the type attribute should be password");	
 	}
+	
+	@Test (priority = 30)
+	public void DisplaysErrorsWhenUserDoesNotExist() {
+		navPage.getLoginButton().click();
+		loginPage.getEmailInput().sendKeys("non-existing-user@gmal.com");
+		loginPage.getPasswordInput().sendKeys("password123");
+		loginPage.getLoginButton().click();
+		messagePopUpPage.waitForPopUpToBeVisible();
+		Assert.assertTrue(messagePopUpPage.getTextMessageFromPopUp()
+				.getText()
+				.contains("User does not exists"),
+				"PopUp should contain + 'User does not exists' text");
+		Assert.assertTrue(driver.getCurrentUrl()
+				.contains("/login"),
+				"Url should contain '/login'");
+	}
 }
