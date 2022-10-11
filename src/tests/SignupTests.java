@@ -51,4 +51,24 @@ public class SignupTests extends BasicTest{
 				"Url should contain '/signup'");
 	}
 	
+	@Test (priority = 40)
+	public void Signup() {
+		navPage.getSignUpButton().click();
+		Assert.assertTrue(driver.getCurrentUrl()
+				.contains("/signup"),
+				"Url should contain '/signup'");
+		signupPage.getNameInput().sendKeys("Nemanja Stojanovic");
+		signupPage.getEmailInput().sendKeys("nemanja_stojanovic@itbootcamp.rs");
+		signupPage.getPasswordInput().sendKeys("12345");
+		signupPage.getConfirmPasswordInput().sendKeys("12345");
+		signupPage.getSignUpButton().click();
+		messagePopUpPage.waitForVerifyAccountPopUp();
+		Assert.assertTrue(messagePopUpPage.getHeaderMessageFromVerifyPopUp()
+				.getText()
+				.contains("IMPORTANT: Verify your account"),
+				"PopUp should contain 'IMPORTANT: Verify your account' text");
+		messagePopUpPage.getCloseButtonFromVerifyAccountPopUp().click();
+		navPage.getLogoutButton().click();
+	}
+	
 }
