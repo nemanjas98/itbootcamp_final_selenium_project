@@ -12,4 +12,5 @@ public class SignupTests extends BasicTest{
 				.contains("/signup"),
 				"Url should contain '/signup'");
 	}
+	
 }
