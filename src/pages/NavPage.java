@@ -33,11 +33,11 @@ public class NavPage {
 	}
 
 	public WebElement getCitiesButton() {
-		return driver.findElement(By.id("list-item-118"));
+		return driver.findElement(By.className("btnAdminCities"));
 	}
 
 	public WebElement getUsersButton() {
-		return driver.findElement(By.id("list-item-121"));
+		return driver.findElement(By.className("btnAdminUsers"));
 	}
 	
 	public WebElement getSignUpButton() {
@@ -75,6 +75,10 @@ public class NavPage {
 
 	public WebElement getUkranianLanguageButton() {
 		return driver.findElement(By.className("btnUA"));
+	}
+	
+	public WebElement getHeaderText() {
+		return driver.findElement(By.tagName("h1"));
 	}
 
 }

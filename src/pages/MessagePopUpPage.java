@@ -24,8 +24,16 @@ public class MessagePopUpPage {
 		return driver.findElement(By.className("v-snack__content"));
 	}
 	
+	public WebElement getTextMessageFromCityPopUp() {
+		return driver.findElement(By.xpath("//div[contains(@class,'v-snack__wrapper v-sheet theme--dark success')]"));
+	}
+	
 	public void waitForResponsePopUp() {
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("success")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class,'success')]//div[contains(@class, 'v-snack__content')]")));
+	}
+	
+	public void waitForErrorResponsePopUp() {
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class,'error')]//div[contains(@class, 'v-snack__content')]")));
 	}
 	
 	public void getCloseButtonFromResponsePopUp() {

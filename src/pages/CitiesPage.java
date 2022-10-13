@@ -21,6 +21,10 @@ public class CitiesPage {
 		return driver.findElement(By.className("btnNewItem"));
 	}
 	
+	public WebElement getCityNameInput() {
+		return driver.findElement(By.id("name"));
+	}
+	
 	public WebElement getSearchInput() {
 		return driver.findElement(By.id("search"));
 	}
@@ -43,7 +47,7 @@ public class CitiesPage {
 	
 	public void waitForNumberOfRows(int rowNumber) {
 		wait.until(ExpectedConditions.numberOfElementsToBe(
-					By.xpath("//*tbody/tr"), rowNumber));
+					By.xpath("//tbody/tr"), rowNumber));
 	}
 	
 	public WebElement getCellFromTheTable(int rowNumber, int columnNumber) {
