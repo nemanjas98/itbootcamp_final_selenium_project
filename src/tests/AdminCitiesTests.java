@@ -46,6 +46,25 @@ public class AdminCitiesTests extends BasicTest{
 				.contains("Saved successfully"),
 				"PopUp should contain 'Saved successfully' text");
 	}
+	
+	@Test (priority = 40)
+	public void  EditCity() {
+		navPage.getAdminButton().click();
+		navPage.getCitiesButton().click();
+		citiesPage.getSearchInput().sendKeys("Nemanja Stojanovic's city");
+		citiesPage.waitForNumberOfRows(1);
+		citiesPage.getEditButtonFromRow(1).click();
+		citiesPage.waitForCreateOrEditDialogToBeVisible();
+		citiesPage.getCityNameInput().sendKeys(Keys.CONTROL + "a");
+		citiesPage.getCityNameInput().sendKeys(Keys.DELETE);
+		citiesPage.getCityNameInput().sendKeys("Nemanja Stojanovic's city Edited");
+		citiesPage.getSaveCityButton().click();
+		messagePopUpPage.waitForResponsePopUp();
+		Assert.assertTrue(messagePopUpPage.getTextMessageFromCityPopUp()
+				.getText()
+				.contains("Saved successfully"),
+				"PopUp should contain 'Saved successfully' text");
+	}
 
 
 }
