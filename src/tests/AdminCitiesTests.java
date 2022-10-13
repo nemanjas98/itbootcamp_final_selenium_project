@@ -77,6 +77,27 @@ public class AdminCitiesTests extends BasicTest{
 				.contains("Nemanja Stojanovic's city Edited"),
 				"Table's value should be 'Nemanja Stojanovic's city Edited'");
 	}
+	
+	@Test (priority = 60)
+	public void DeleteCity() {
+		navPage.getAdminButton().click();
+		navPage.getCitiesButton().click();
+		citiesPage.getSearchInput().sendKeys("Nemanja Stojanovic's city Edited");
+		citiesPage.waitForNumberOfRows(1);
+		softAssert.assertTrue(citiesPage.getCellFromTheTable(1, 2)
+				.getText()
+				.contains("Nemanja Stojanovic's city Edited"),
+				"Table's value should be 'Nemanja Stojanovic's city Edited'");
+		citiesPage.getDeleteButtonFromRow(1).click();
+		citiesPage.waitForDeleteDialogToBeVisible();
+		citiesPage.getDeleteCityButton().click();
+		messagePopUpPage.waitForResponsePopUp();
+		softAssert.assertTrue(messagePopUpPage.getTextMessageFromCityPopUp()
+				.getText()
+				.contains("Deleted successfully"),
+				"PopUp should contain 'Deleted successfully' text");
+		softAssert.assertAll();
+	}
 
 
 }
